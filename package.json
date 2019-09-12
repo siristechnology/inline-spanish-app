@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "react-native start",
 		"a": "concurrently \"yarn start\"  \"react-native run-android\"",
+		"start": "react-native start",
 		"build": "cd android && ./gradlew app:assembleRelease && cd ..",
 		"refresh": "adb shell input keyevent 46 46",
 		"reset": "react-native start --reset-cache",
@@ -14,7 +14,12 @@
 	"dependencies": {
 		"react": "16.8.6",
 		"react-native": "0.60.5",
-		"react-navigation": "4.0.3"
+		"react-native-gesture-handler": "1.4.1",
+		"react-native-reanimated": "1.2.0",
+		"react-native-vector-icons": "6.6.0",
+		"react-navigation": "4.0.3",
+		"react-navigation-stack": "1.5.5",
+		"react-navigation-tabs": "2.4.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.6.0",
