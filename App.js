@@ -1,110 +1,48 @@
-import React, {Fragment} from 'react'
-import {
-	SafeAreaView,
-	StyleSheet,
-	ScrollView,
-	View,
-	Text,
-	StatusBar,
-} from 'react-native'
+import React from 'react'
+import {createAppContainer} from 'react-navigation'
+import {createBottomTabNavigator} from 'react-navigation-tabs'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import IconWithBadge from './src/components/IconWithBadge'
+import MediumScreen from './src/screens/medium/medium-screen'
+import CnnScreen from './src/screens/cnn/cnn-screen'
 
-import {
-	Header,
-	LearnMoreLinks,
-	Colors,
-	DebugInstructions,
-	ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen'
+const TabNavigator = createBottomTabNavigator(
+	{
+		Medium: MediumScreen,
+		Cnn: CnnScreen,
+	},
+	{
+		defaultNavigationOptions: ({navigation}) => ({
+			tabBarIcon: ({focused, horizontal, tintColor}) => {
+				const {routeName} = navigation.state
+				let IconComponent = FontAwesome
+				let iconName
+				if (routeName === 'Medium') {
+					iconName = 'ios-bookmarks'
+					IconComponent = HomeIconWithBadge
+				} else if (routeName === 'Cnn') {
+					iconName = 'newspaper-o'
+				}
 
-const App = () => {
-	return (
-		<Fragment>
-			<StatusBar barStyle="dark-content" />
-			<SafeAreaView>
-				<ScrollView
-					contentInsetAdjustmentBehavior="automatic"
-					style={styles.scrollView}>
-					<Header />
-					{global.HermesInternal == null ? null : (
-						<View style={styles.engine}>
-							<Text style={styles.footer}>Engine: Hermes</Text>
-						</View>
-					)}
-					<View style={styles.body}>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>Step One</Text>
-							<Text style={styles.sectionDescription}>
-								Edit{' '}
-								<Text style={styles.highlight}>App.js</Text> to
-								change this screen and then come back to see
-								your edits.
-							</Text>
-						</View>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>
-								See Your Changes
-							</Text>
-							<Text style={styles.sectionDescription}>
-								<ReloadInstructions />
-							</Text>
-						</View>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>Debug</Text>
-							<Text style={styles.sectionDescription}>
-								<DebugInstructions />
-							</Text>
-						</View>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>Learn More</Text>
-							<Text style={styles.sectionDescription}>
-								Read the docs to discover what to do next:
-							</Text>
-						</View>
-						<LearnMoreLinks />
-					</View>
-				</ScrollView>
-			</SafeAreaView>
-		</Fragment>
-	)
+				return (
+					<IconComponent
+						name={iconName}
+						size={25}
+						color={tintColor}
+					/>
+				)
+			},
+		}),
+		tabBarOptions: {
+			activeTintColor: 'tomato',
+			inactiveTintColor: 'gray',
+		},
+	},
+)
+
+const HomeIconWithBadge = props => {
+	// You should pass down the badgeCount in some other ways like react context api, redux, mobx or event emitters.
+	return <IconWithBadge {...props} badgeCount={3} />
 }
 
-const styles = StyleSheet.create({
-	scrollView: {
-		backgroundColor: Colors.lighter,
-	},
-	engine: {
-		position: 'absolute',
-		right: 0,
-	},
-	body: {
-		backgroundColor: Colors.white,
-	},
-	sectionContainer: {
-		marginTop: 32,
-		paddingHorizontal: 24,
-	},
-	sectionTitle: {
-		fontSize: 24,
-		fontWeight: '600',
-		color: Colors.black,
-	},
-	sectionDescription: {
-		marginTop: 8,
-		fontSize: 18,
-		fontWeight: '400',
-		color: Colors.dark,
-	},
-	highlight: {
-		fontWeight: '700',
-	},
-	footer: {
-		color: Colors.dark,
-		fontSize: 12,
-		fontWeight: '600',
-		padding: 4,
-		paddingRight: 12,
-		textAlign: 'right',
-	},
-})
-
-export default App
+export default createAppContainer(TabNavigator)
