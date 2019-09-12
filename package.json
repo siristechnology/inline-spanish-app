@@ -4,12 +4,17 @@
 	"private": true,
 	"scripts": {
 		"start": "react-native start",
+		"a": "concurrently \"yarn start\"  \"react-native run-android\"",
+		"build": "cd android && ./gradlew app:assembleRelease && cd ..",
+		"refresh": "adb shell input keyevent 46 46",
+		"reset": "react-native start --reset-cache",
 		"test": "jest",
 		"lint": "eslint ."
 	},
 	"dependencies": {
 		"react": "16.8.6",
-		"react-native": "0.60.5"
+		"react-native": "0.60.5",
+		"react-navigation": "4.0.3"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.6.0",
