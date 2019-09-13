@@ -1,10 +1,12 @@
 import React from 'react'
-import {createAppContainer} from 'react-navigation'
-import {createBottomTabNavigator} from 'react-navigation-tabs'
+import { createAppContainer } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconWithBadge from './src/components/IconWithBadge'
 import MediumScreen from './src/screens/medium/medium-screen'
 import CnnScreen from './src/screens/cnn/cnn-screen'
+import { mapping, light as lightTheme } from '@eva-design/eva'
+import { ApplicationProvider } from 'react-native-ui-kitten'
 
 const TabNavigator = createBottomTabNavigator(
 	{
@@ -12,13 +14,13 @@ const TabNavigator = createBottomTabNavigator(
 		Cnn: CnnScreen,
 	},
 	{
-		defaultNavigationOptions: ({navigation}) => ({
-			tabBarIcon: ({focused, horizontal, tintColor}) => {
-				const {routeName} = navigation.state
+		defaultNavigationOptions: ({ navigation }) => ({
+			tabBarIcon: ({ focused, horizontal, tintColor }) => {
+				const { routeName } = navigation.state
 				let IconComponent = FontAwesome
 				let iconName
 				if (routeName === 'Medium') {
-					iconName = 'ios-bookmarks'
+					iconName = 'bookmark'
 					IconComponent = HomeIconWithBadge
 				} else if (routeName === 'Cnn') {
 					iconName = 'newspaper-o'
@@ -45,4 +47,10 @@ const HomeIconWithBadge = props => {
 	return <IconWithBadge {...props} badgeCount={3} />
 }
 
-export default createAppContainer(TabNavigator)
+const App = createAppContainer(TabNavigator)
+
+export default () => (
+	<ApplicationProvider mapping={mapping} theme={lightTheme}>
+		<App />
+	</ApplicationProvider>
+)
