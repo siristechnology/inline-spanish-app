@@ -1,7 +1,7 @@
-import React, {Fragment} from 'react'
-import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native'
+import React, { Fragment } from 'react'
+import { SafeAreaView, StyleSheet, ScrollView, View, Text } from 'react-native'
 
-import {Header, Colors} from 'react-native/Libraries/NewAppScreen'
+import { Header, Colors } from 'react-native/Libraries/NewAppScreen'
 
 const CnnScreen = () => {
 	return (
