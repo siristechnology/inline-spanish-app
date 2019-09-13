@@ -1,6 +1,6 @@
 import React from 'react'
-import {createAppContainer} from 'react-navigation'
-import {createBottomTabNavigator} from 'react-navigation-tabs'
+import { createAppContainer } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconWithBadge from './src/components/IconWithBadge'
 import MediumScreen from './src/screens/medium/medium-screen'
@@ -12,9 +12,9 @@ const TabNavigator = createBottomTabNavigator(
 		Cnn: CnnScreen,
 	},
 	{
-		defaultNavigationOptions: ({navigation}) => ({
-			tabBarIcon: ({focused, horizontal, tintColor}) => {
-				const {routeName} = navigation.state
+		defaultNavigationOptions: ({ navigation }) => ({
+			tabBarIcon: ({ focused, horizontal, tintColor }) => {
+				const { routeName } = navigation.state
 				let IconComponent = FontAwesome
 				let iconName
 				if (routeName === 'Medium') {
