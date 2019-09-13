@@ -1,6 +1,8 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { mapping, light as lightTheme } from '@eva-design/eva'
+import { ApplicationProvider } from 'react-native-ui-kitten'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconWithBadge from './src/components/IconWithBadge'
 import MediumScreen from './src/screens/medium/medium-screen'
@@ -45,4 +47,10 @@ const HomeIconWithBadge = props => {
 	return <IconWithBadge {...props} badgeCount={3} />
 }
 
-export default createAppContainer(TabNavigator)
+const App = createAppContainer(TabNavigator)
+
+export default () => (
+	<ApplicationProvider mapping={mapping} theme={lightTheme}>
+		<App />
+	</ApplicationProvider>
+)
