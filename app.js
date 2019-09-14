@@ -14,6 +14,7 @@ const TabNavigator = createBottomTabNavigator(
 		Cnn: CnnScreen,
 	},
 	{
+		initialRouteName: 'Cnn',
 		defaultNavigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, horizontal, tintColor }) => {
 				const { routeName } = navigation.state

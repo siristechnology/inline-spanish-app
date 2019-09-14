@@ -2,12 +2,7 @@ export {
 	ActivityAuthoring,
 	ActivitiAuthoringProps,
 } from './activityAuthoring.component'
-// export {
-//   ScrollableAvoidKeyboard,
-//   ScrollableAvoidKeyboardProps,
-// } from './scrollableAvoidKeyboard.component';
-export { ContainerView, ContainerViewProps } from './containerView.component'
-export { AvoidKeyboard, AvoidKeyboardProps } from './avoidKeyboard.component'
+
 export { CommentsButton, CommentsButtonProps } from './commentsButton.component'
 export { ActivityBar, ActivityBarProps } from './activityBar.component'
 export { ImageOverlay, ImageOverlayProps } from './imageOverlay.component'
