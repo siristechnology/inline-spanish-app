@@ -9,11 +9,19 @@
 		"refresh": "adb shell input keyevent 46 46",
 		"reset": "react-native start --reset-cache",
 		"test": "jest",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"preinstall": "node tools/preinstall-script.js"
 	},
 	"dependencies": {
+		"@apollo/react-hooks": "3.1.0",
 		"@eva-design/eva": "1.0.1",
 		"@types/react-native": "0.60.14",
+		"apollo-cache-inmemory": "1.6.3",
+		"apollo-client": "2.6.4",
+		"apollo-link-http": "1.5.16",
+		"graphql": "14.5.5",
+		"graphql-tag": "2.10.1",
+		"node-fetch": "2.6.0",
 		"react": "16.8.6",
 		"react-native": "0.60.5",
 		"react-native-gesture-handler": "1.4.1",
@@ -26,7 +34,8 @@
 		"react-navigation-tabs": "2.4.2"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.6.0",
+		"@babel/core": "7.6.0",
+		"@babel/node": "7.6.1",
 		"@babel/runtime": "^7.6.0",
 		"@react-native-community/eslint-config": "^0.0.5",
 		"babel-jest": "^24.9.0",
