@@ -6,12 +6,13 @@ import { ApplicationProvider } from 'react-native-ui-kitten'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconWithBadge from './src/components/IconWithBadge'
 import MediumScreen from './src/screens/medium/medium-screen'
-import CnnScreen from './src/screens/cnn/cnn-screen'
+// import CnnScreen from './src/screens/cnn/cnn-screen'
+import ArticleDetail from './src/screens/article-detail/article2.container'
 
 const TabNavigator = createBottomTabNavigator(
 	{
 		Medium: MediumScreen,
-		Cnn: CnnScreen,
+		Cnn: ArticleDetail,
 	},
 	{
 		initialRouteName: 'Cnn',
