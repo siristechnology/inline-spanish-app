@@ -34,7 +34,9 @@ class Article2Component extends React.Component<Article2Props> {
 
 		return (
 			<ContainerView style={themedStyle.container}>
-				<ImageBackground style={themedStyle.image} source={img}>
+				<ImageBackground
+					style={themedStyle.image}
+					source={{ uri: article.lead_image_url }}>
 					<Avatar
 						style={themedStyle.authorPhoto}
 						size="large"

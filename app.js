@@ -1,18 +1,29 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createStackNavigator } from 'react-navigation-stack'
 import { mapping, light as lightTheme } from '@eva-design/eva'
 import { ApplicationProvider } from 'react-native-ui-kitten'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconWithBadge from './src/components/IconWithBadge'
 import MediumScreen from './src/screens/medium/medium-screen'
-// import CnnScreen from './src/screens/cnn/cnn-screen'
+import CnnScreen from './src/screens/cnn/cnn-screen'
 import ArticleDetail from './src/screens/article-detail/article2.container'
 
-const TabNavigator = createBottomTabNavigator(
+const CnnStack = createStackNavigator(
+	{
+		Cnn: CnnScreen,
+		ArticleDetail: ArticleDetail,
+	},
+	{
+		headerMode: 'none',
+	},
+)
+
+const BottomTabNavigator = createBottomTabNavigator(
 	{
 		Medium: MediumScreen,
-		Cnn: ArticleDetail,
+		Cnn: CnnStack,
 	},
 	{
 		initialRouteName: 'Cnn',
@@ -49,7 +60,7 @@ const HomeIconWithBadge = props => {
 	return <IconWithBadge {...props} badgeCount={3} />
 }
 
-const App = createAppContainer(TabNavigator)
+const App = createAppContainer(BottomTabNavigator)
 
 export default () => (
 	<ApplicationProvider mapping={mapping} theme={lightTheme}>

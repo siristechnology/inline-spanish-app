@@ -24,29 +24,32 @@ export const FETCH_ARTICLES_QUERY = gql`
 	}
 `
 
-export default function CnnScreen() {
-	const { loading, error, data } = useQuery(FETCH_ARTICLES_QUERY, {
-		variables: {},
-	})
-	if (loading) return <Text>Loading...</Text>
-	if (error) return <Text>Error!</Text>
-
-	return <CnnArticleList articles={data.fetchArticles} />
-}
-
 class CnnArticleList extends React.Component<NavigationScreenProps> {
-	private onItemPress = article => {}
-	private onItemLikePress = article => {}
-	private onItemCommentPress = article => {}
+	private onItemPress = article => {
+		const { navigation } = this.props
+		navigation.navigate('ArticleDetail', { article })
+	}
 
 	public render() {
 		return (
 			<ArticleList1
 				articles={this.props.articles}
 				onItemPress={this.onItemPress}
-				onItemLikePress={this.onItemLikePress}
-				onItemCommentPress={this.onItemCommentPress}
 			/>
 		)
 	}
+}
+
+export default function CnnScreen(props) {
+	const { loading, error, data } = useQuery(FETCH_ARTICLES_QUERY, {
+		variables: {},
+	})
+	if (loading) return <Text>Loading...</Text>
+	if (error) return <Text>Error!</Text>
+
+	const { navigation } = props
+
+	return (
+		<CnnArticleList articles={data.fetchArticles} navigation={navigation} />
+	)
 }
