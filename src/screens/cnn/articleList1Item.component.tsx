@@ -46,7 +46,10 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 				{...restProps}
 				style={[themedStyle.container, style]}
 				onPress={this.onPress}>
-				<ImageBackground style={themedStyle.image} source={img} />
+				<ImageBackground
+					style={themedStyle.image}
+					source={{ uri: article.lead_image_url }}
+				/>
 				<View style={themedStyle.infoContainer}>
 					<Text style={themedStyle.titleLabel} category="h5">
 						{article.title}
@@ -55,7 +58,7 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 						style={themedStyle.descriptionLabel}
 						appearance="hint"
 						category="s1">
-						{article.description}
+						{article.excerpt}
 					</Text>
 				</View>
 				<ArticleActivityBar
@@ -66,7 +69,7 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 					onLikePress={this.onLikeButtonPress}>
 					<ActivityAuthoring
 						photo={img}
-						name={`${article.author.firstName} ${article.author.lastName}`}
+						name={`${article.author}`}
 						date={article.date}
 					/>
 				</ArticleActivityBar>
