@@ -5,14 +5,14 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { mapping, light as lightTheme } from '@eva-design/eva'
 import { ApplicationProvider } from 'react-native-ui-kitten'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import IconWithBadge from './src/components/IconWithBadge'
+
 import MediumScreen from './src/screens/medium/medium-screen'
 import CnnScreen from './src/screens/cnn/cnn-screen'
 import ArticleDetail from './src/screens/article-detail/article2.container'
 
-const CnnStack = createStackNavigator(
+const MediumStack = createStackNavigator(
 	{
-		Cnn: CnnScreen,
+		Medium: MediumScreen,
 		ArticleDetail: ArticleDetail,
 	},
 	{
@@ -22,29 +22,23 @@ const CnnStack = createStackNavigator(
 
 const BottomTabNavigator = createBottomTabNavigator(
 	{
-		Medium: MediumScreen,
-		Cnn: CnnStack,
+		Cnn: CnnScreen,
+		Medium: MediumStack,
 	},
 	{
-		initialRouteName: 'Cnn',
+		initialRouteName: 'Medium',
 		defaultNavigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, horizontal, tintColor }) => {
 				const { routeName } = navigation.state
-				let IconComponent = FontAwesome
 				let iconName
 				if (routeName === 'Medium') {
-					iconName = 'ios-bookmarks'
-					IconComponent = HomeIconWithBadge
+					iconName = 'bookmark-o'
 				} else if (routeName === 'Cnn') {
 					iconName = 'newspaper-o'
 				}
 
 				return (
-					<IconComponent
-						name={iconName}
-						size={25}
-						color={tintColor}
-					/>
+					<FontAwesome name={iconName} size={25} color={tintColor} />
 				)
 			},
 		}),
@@ -54,11 +48,6 @@ const BottomTabNavigator = createBottomTabNavigator(
 		},
 	},
 )
-
-const HomeIconWithBadge = props => {
-	// You should pass down the badgeCount in some other ways like react context api, redux, mobx or event emitters.
-	return <IconWithBadge {...props} badgeCount={3} />
-}
 
 const App = createAppContainer(BottomTabNavigator)
 
