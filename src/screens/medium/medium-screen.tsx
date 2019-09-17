@@ -13,7 +13,8 @@ export const FETCH_ARTICLES_QUERY = gql`
 			url
 			lead_image_url
 			excerpt
-			content
+			original_content
+			translated_content
 			source {
 				name
 				logoLink
