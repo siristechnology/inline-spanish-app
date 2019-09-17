@@ -1,5 +1,6 @@
 import React from 'react'
 import { ImageBackground, View } from 'react-native'
+import moment from 'moment'
 import {
 	ThemedComponentProps,
 	ThemeType,
@@ -63,12 +64,18 @@ class Article2Component extends React.Component<Article2Props> {
 							style={themedStyle.dateLabel}
 							appearance="hint"
 							category="p2">
-							{article.date}
+							{this.getRelativeTime(article.date_published)}
 						</Text>
 					</View>
 				</ArticleActivityBar>
 			</ContainerView>
 		)
+	}
+
+	public getRelativeTime(date) {
+		return moment(Number(date))
+			.startOf('hour')
+			.fromNow()
 	}
 
 	public createContentView(original_content, translated_content) {
