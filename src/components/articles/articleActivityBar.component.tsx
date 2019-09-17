@@ -8,7 +8,6 @@ import {
 import {
 	ActivityBar,
 	ActivityBarProps,
-	CommentsButton,
 	LikeButton,
 	ReactionBar,
 } from '../../components/common'
@@ -16,8 +15,6 @@ import {
 interface ComponentProps {
 	comments: number
 	likes: number
-	onCommentPress: () => void
-	onLikePress: () => void
 	textStyle?: StyleProp<TextStyle>
 }
 
@@ -32,10 +29,7 @@ class ArticleActivityBarComponent extends React.Component<
 		const {
 			themedStyle,
 			textStyle,
-			comments,
 			likes,
-			onCommentPress,
-			onLikePress,
 			children,
 			...restProps
 		} = this.props
@@ -44,17 +38,8 @@ class ArticleActivityBarComponent extends React.Component<
 			<ActivityBar {...restProps}>
 				{children}
 				<ReactionBar>
-					<CommentsButton
-						textStyle={textStyle}
-						activeOpacity={0.75}
-						onPress={onCommentPress}>
-						{`${comments}`}
-					</CommentsButton>
-					<LikeButton
-						textStyle={textStyle}
-						activeOpacity={0.75}
-						onPress={onLikePress}>
-						{`${likes}`}
+					<LikeButton textStyle={textStyle} activeOpacity={0.75}>
+						{`${likes || 0}`}
 					</LikeButton>
 				</ReactionBar>
 			</ActivityBar>

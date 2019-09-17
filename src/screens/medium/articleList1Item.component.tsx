@@ -1,5 +1,6 @@
 import React from 'react'
 import { ImageBackground, TouchableOpacity, View } from 'react-native'
+import moment from 'moment'
 import {
 	ThemedComponentProps,
 	ThemeType,
@@ -13,7 +14,6 @@ import { ActivityAuthoring, textStyle } from '../../components/common'
 interface ComponentProps extends TouchableOpacityProps {
 	article
 	onPress: (article) => void
-	onCommentPress: (article) => void
 	onLikePress: (article) => void
 }
 
@@ -24,19 +24,8 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 		this.props.onPress(this.props.article)
 	}
 
-	private onCommentsButtonPress = () => {
-		this.props.onCommentPress(this.props.article)
-	}
-
-	private onLikeButtonPress = () => {
-		this.props.onLikePress(this.props.article)
-	}
-
 	public render() {
 		const { style, themedStyle, article, ...restProps } = this.props
-		const commentsCount: number = article.comments
-			? article.comments.length
-			: 0
 
 		const img = require('../../assets/images/source/image-article-background-2.jpg')
 
@@ -63,18 +52,21 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 				</View>
 				<ArticleActivityBar
 					style={themedStyle.activityContainer}
-					comments={commentsCount}
-					likes={article.likes}
-					onCommentPress={this.onCommentsButtonPress}
-					onLikePress={this.onLikeButtonPress}>
+					likes={article.likes || 0}>
 					<ActivityAuthoring
 						photo={img}
 						name={`${article.author}`}
-						date={article.date}
+						date={this.getRelativeTime(article.date_published)}
 					/>
 				</ArticleActivityBar>
 			</TouchableOpacity>
 		)
+	}
+
+	public getRelativeTime(date) {
+		return moment(Number(date))
+			.startOf('hour')
+			.fromNow()
 	}
 }
 

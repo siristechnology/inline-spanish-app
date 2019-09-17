@@ -1,5 +1,6 @@
 import React from 'react'
 import { ImageBackground, View } from 'react-native'
+import moment from 'moment'
 import {
 	ThemedComponentProps,
 	ThemeType,
@@ -43,12 +44,14 @@ class Article2Component extends React.Component<Article2Props> {
 						source={img}
 					/>
 				</ImageBackground>
+
 				<Text style={themedStyle.titleLabel} category="h5">
 					{article.title}
 				</Text>
-				<Text style={themedStyle.contentLabel} category="s1">
-					{article.content}
-				</Text>
+				{this.createContentView(
+					article.original_content,
+					article.translated_content,
+				)}
 				<ArticleActivityBar
 					style={themedStyle.detailsContainer}
 					comments={article.comments ? article.comments.length : 0}
@@ -61,11 +64,42 @@ class Article2Component extends React.Component<Article2Props> {
 							style={themedStyle.dateLabel}
 							appearance="hint"
 							category="p2">
-							{article.date}
+							{this.getRelativeTime(article.date_published)}
 						</Text>
 					</View>
 				</ArticleActivityBar>
 			</ContainerView>
+		)
+	}
+
+	public getRelativeTime(date) {
+		return moment(Number(date))
+			.startOf('hour')
+			.fromNow()
+	}
+
+	public createContentView(original_content, translated_content) {
+		const { themedStyle } = this.props
+
+		return (
+			<View style={themedStyle.contentLabel}>
+				{original_content.map((item, index) => {
+					return (
+						<View key={index}>
+							<Text
+								category="s1"
+								style={themedStyle.translatedLabel}>
+								{translated_content[index]}
+							</Text>
+							<Text
+								category="s1"
+								style={themedStyle.englishLabel}>
+								{item}
+							</Text>
+						</View>
+					)
+				})}
+			</View>
 		)
 	}
 }
@@ -100,6 +134,13 @@ export const Article2 = withStyles(Article2Component, (theme: ThemeType) => ({
 		marginHorizontal: 24,
 		marginTop: 48,
 		...textStyle.headline,
+	},
+	translatedLabel: {
+		flex: 1,
+	},
+	englishLabel: {
+		flex: 1,
+		color: '#dadfe3',
 	},
 	contentLabel: {
 		flex: 1,
