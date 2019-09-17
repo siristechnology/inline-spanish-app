@@ -10,8 +10,6 @@ import { ArticleList1Item } from './articleList1Item.component'
 interface ComponentProps {
 	articles
 	onItemPress: (article) => void
-	onItemLikePress: (article) => void
-	onItemCommentPress: (article) => void
 }
 
 export type ArticleList1Props = ThemedComponentProps & ComponentProps
@@ -19,14 +17,6 @@ export type ArticleList1Props = ThemedComponentProps & ComponentProps
 class ArticleList1Component extends React.Component<ArticleList1Props> {
 	private onItemPress = article => {
 		this.props.onItemPress(article)
-	}
-
-	private onItemLikePress = article => {
-		this.props.onItemLikePress(article)
-	}
-
-	private onItemCommentPress = article => {
-		this.props.onItemCommentPress(article)
 	}
 
 	private renderItem = info => {
@@ -37,8 +27,6 @@ class ArticleList1Component extends React.Component<ArticleList1Props> {
 				style={themedStyle.item}
 				article={info.item}
 				onPress={this.onItemPress}
-				onLikePress={this.onItemLikePress}
-				onCommentPress={this.onItemCommentPress}
 			/>
 		)
 	}

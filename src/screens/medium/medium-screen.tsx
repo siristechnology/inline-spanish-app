@@ -21,6 +21,7 @@ export const FETCH_ARTICLES_QUERY = gql`
 			}
 			author
 			date_published
+			likes
 		}
 	}
 `
