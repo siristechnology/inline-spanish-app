@@ -8,7 +8,6 @@ import {
 import {
 	ActivityBar,
 	ActivityBarProps,
-	CommentsButton,
 	LikeButton,
 	ReactionBar,
 } from '../../components/common'
