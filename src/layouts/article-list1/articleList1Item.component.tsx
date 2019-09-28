@@ -27,8 +27,6 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 	public render() {
 		const { style, themedStyle, article, ...restProps } = this.props
 
-		const img = require('../../assets/images/source/image-article-background-2.jpg')
-
 		return (
 			<TouchableOpacity
 				activeOpacity={0.95}
