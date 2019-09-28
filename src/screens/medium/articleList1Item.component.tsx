@@ -54,8 +54,8 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 					style={themedStyle.activityContainer}
 					likes={article.likes || 0}>
 					<ActivityAuthoring
-						photo={img}
-						name={`${article.author}`}
+						photo={{ uri: article.source.logoLink }}
+						name={`${article.source.name}`}
 						date={this.getRelativeTime(article.date_published)}
 					/>
 				</ArticleActivityBar>
