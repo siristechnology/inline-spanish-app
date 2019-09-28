@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.inlinespanishapp"
+        applicationId "com.siristechnology.spanilla"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
