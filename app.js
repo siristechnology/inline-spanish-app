@@ -6,13 +6,23 @@ import { mapping, light as lightTheme } from '@eva-design/eva'
 import { ApplicationProvider } from 'react-native-ui-kitten'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-import MediumScreen from './src/screens/medium/medium-screen'
-import CnnScreen from './src/screens/cnn/cnn-screen'
-import ArticleDetail from './src/screens/article-detail/article2.container'
+import DevScreen from './src/screens/dev/dev-screen'
+import NewsScreen from './src/screens/news/news-screen'
+import ArticleDetail from './src/layouts/article-detail/article2.container'
 
-const MediumStack = createStackNavigator(
+const NewsStack = createStackNavigator(
 	{
-		Medium: MediumScreen,
+		News: NewsScreen,
+		ArticleDetail: ArticleDetail,
+	},
+	{
+		headerMode: 'none',
+	},
+)
+
+const DevStack = createStackNavigator(
+	{
+		Dev: DevScreen,
 		ArticleDetail: ArticleDetail,
 	},
 	{
@@ -22,18 +32,18 @@ const MediumStack = createStackNavigator(
 
 const BottomTabNavigator = createBottomTabNavigator(
 	{
-		Cnn: CnnScreen,
-		Medium: MediumStack,
+		News: NewsStack,
+		Dev: DevStack,
 	},
 	{
-		initialRouteName: 'Medium',
+		initialRouteName: 'News',
 		defaultNavigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, horizontal, tintColor }) => {
 				const { routeName } = navigation.state
 				let iconName
-				if (routeName === 'Medium') {
+				if (routeName === 'Dev') {
 					iconName = 'bookmark-o'
-				} else if (routeName === 'Cnn') {
+				} else if (routeName === 'News') {
 					iconName = 'newspaper-o'
 				}
 
@@ -45,6 +55,7 @@ const BottomTabNavigator = createBottomTabNavigator(
 		tabBarOptions: {
 			activeTintColor: 'tomato',
 			inactiveTintColor: 'gray',
+			showLabel: false,
 		},
 	},
 )

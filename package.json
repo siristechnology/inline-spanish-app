@@ -1,15 +1,14 @@
 {
-	"name": "inline-spanish-app",
+	"name": "spanilla-app",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"a": "concurrently \"yarn start\"  \"react-native run-android\"",
-		"start": "react-native start",
+		"start": "concurrently \"react-native start\"  \"react-native run-android\"",
 		"build": "cd android && ./gradlew app:assembleRelease && cd ..",
 		"refresh": "adb shell input keyevent 46 46",
 		"reset": "react-native start --reset-cache",
 		"test-query": "babel-node __tests__/graphql.integration.test.js",
-		"test": "jest",
+		"test": "jest --testMatch '**/?(*.)+(spec|test).[tj]s?(x)' ",
 		"lint": "eslint .",
 		"preinstall": "node tools/preinstall-script.js"
 	},
