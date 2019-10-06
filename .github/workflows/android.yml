@@ -33,7 +33,7 @@ jobs:
             - name: Make apk available for download
               uses: actions/download-artifact@master
               with:
-                name: app-release-unsigned.apk
-                path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+                  name: app-release-unsigned.apk
+                  path: ./android/app/build/outputs/apk/release/app-release-unsigned.apk
 
-            - run: cat android/app/build/outputs/apk/release/app-release-unsigned.apk
+            - run: cat ./android/app/build/outputs/apk/release/app-release-unsigned.apk
