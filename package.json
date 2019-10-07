@@ -16,7 +16,7 @@
 		"@apollo/react-hooks": "3.1.2",
 		"@eva-design/eva": "1.2.0",
 		"@react-native-community/async-storage": "1.6.2",
-		"@types/react-native": "0.60.18",
+		"@types/react-native": "0.60.19",
 		"apollo-cache-inmemory": "1.6.3",
 		"apollo-client": "2.6.4",
 		"apollo-link": "1.2.13",
