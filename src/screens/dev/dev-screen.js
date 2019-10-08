@@ -20,6 +20,7 @@ export const FETCH_ARTICLES_QUERY = gql`
 			}
 			author
 			date_published
+			date_modified
 			likes
 		}
 	}
@@ -39,6 +40,11 @@ export default function DevScreen(props) {
 
 	const articles = data.fetchArticles.filter(
 		article => article.source && article.source.category === 'dev',
+	)
+
+	console.log(
+		'Printing articles[0].date_published',
+		articles[0].date_published,
 	)
 
 	return <ArticleList1Container articles={articles} navigation={navigation} />
