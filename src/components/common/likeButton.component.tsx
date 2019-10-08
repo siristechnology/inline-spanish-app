@@ -55,7 +55,7 @@ export const LikeButton = withStyles(
 		icon: {
 			width: 24,
 			height: 24,
-			tintColor: theme['color-danger-default'],
+			tintColor: 'gray',
 		},
 		valueLabel: {
 			marginHorizontal: 8,

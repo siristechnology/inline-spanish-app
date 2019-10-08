@@ -42,7 +42,7 @@ const BottomTabNavigator = createBottomTabNavigator(
 				const { routeName } = navigation.state
 				let iconName
 				if (routeName === 'Dev') {
-					iconName = 'bookmark-o'
+					iconName = 'code'
 				} else if (routeName === 'News') {
 					iconName = 'newspaper-o'
 				}
