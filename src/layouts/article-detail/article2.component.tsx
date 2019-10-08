@@ -31,10 +31,6 @@ class Article2Component extends React.Component<Article2Props> {
 	public render(): React.ReactNode {
 		const { themedStyle, article } = this.props
 
-		// const img = require('../../assets/images/source/image-article-background-2.jpg')
-		// const img = require(article.source.logoLink)
-		// console.log('Printing article.source.logoLink', article.source.logoLink)
-
 		return (
 			<ContainerView style={themedStyle.container}>
 				<ImageBackground
@@ -43,7 +39,7 @@ class Article2Component extends React.Component<Article2Props> {
 					<Avatar
 						style={themedStyle.authorPhoto}
 						size="large"
-						photo={{ uri: article.source.logoLink }}
+						source={{ uri: article.source.logoLink }}
 					/>
 				</ImageBackground>
 
