@@ -12,6 +12,6 @@ jobs:
    - name: Publish Release APK
      uses: siristechnology/action-release-react-native-apk@master
      env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.TOKEN }}
       APP_FOLDER: android/app
       RELEASE_TITLE: "New Build"
