@@ -15,8 +15,6 @@ export default class Article2Container extends React.Component<
 	private onLikePress = () => {}
 
 	public render(): React.ReactNode {
-		console.log('Printing this.props inside detail', this.props)
-
 		const {
 			navigation: {
 				state: {

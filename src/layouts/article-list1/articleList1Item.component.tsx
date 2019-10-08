@@ -54,7 +54,9 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 					<ActivityAuthoring
 						photo={{ uri: article.source.logoLink }}
 						name={`${article.source.name}`}
-						date={this.getRelativeTime(article.date_published)}
+						date={this.getRelativeTime(
+							article.date_published || article.date_modified,
+						)}
 					/>
 				</ArticleActivityBar>
 			</TouchableOpacity>
