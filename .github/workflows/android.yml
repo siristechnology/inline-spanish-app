@@ -28,7 +28,7 @@ jobs:
                   yarn
 
             - name: Build with Gradle
-              run: yarn build
+              run: yarn build && run echo ${{ github.ref }}
 
             - name: Publish Release APK
               uses: siristechnology/action-release-react-native-apk@master
