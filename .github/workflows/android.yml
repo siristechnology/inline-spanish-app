@@ -30,10 +30,9 @@ jobs:
             - name: Build with Gradle
               run: yarn build
 
-            - name: Make apk available for download
-              uses: actions/download-artifact@master
-              with:
-                  name: app-release-unsigned.apk
-                  path: ../android/app/build/outputs/apk/release/app-release-unsigned.apk
-
-            - run: cat ../android/app/build/outputs/apk/release/app-release-unsigned.apk
+            - name: Publish Release APK
+              uses: siristechnology/action-release-react-native-apk@master
+              env:
+                  GITHUB_TOKEN: ${{ secrets.TOKEN }}
+                  APP_FOLDER: android/app
+                  RELEASE_TITLE: 'New Build'
