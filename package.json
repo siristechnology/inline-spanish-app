@@ -39,9 +39,9 @@
 		"react-navigation-tabs": "2.5.5"
 	},
 	"devDependencies": {
-		"@babel/core": "7.6.2",
-		"@babel/node": "7.6.2",
-		"@babel/runtime": "^7.6.0",
+		"@babel/core": "7.6.3",
+		"@babel/node": "7.6.3",
+		"@babel/runtime": "^7.6.3",
 		"@react-native-community/eslint-config": "^0.0.5",
 		"babel-jest": "^24.9.0",
 		"babel-plugin-graphql-tag": "2.5.0",
