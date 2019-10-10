@@ -28,11 +28,10 @@ jobs:
                   yarn
 
             - name: Build with Gradle
-              run: yarn build && echo github.base_ref ${{ github.base_ref }}
+              run: yarn build
 
             - name: Publish Release APK
               uses: siristechnology/action-release-react-native-apk@master
-              if: github.base_ref == 'master'
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
                   APP_FOLDER: android/app
