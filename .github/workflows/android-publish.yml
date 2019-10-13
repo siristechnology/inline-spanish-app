@@ -1,4 +1,4 @@
-name: Android & Node CI
+name: Android Apk Publish
 
 on:
     push:
