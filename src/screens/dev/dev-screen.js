@@ -42,10 +42,5 @@ export default function DevScreen(props) {
 		article => article.source && article.source.category === 'dev',
 	)
 
-	console.log(
-		'Printing articles[0].date_published',
-		articles[0].date_published,
-	)
-
 	return <ArticleList1Container articles={articles} navigation={navigation} />
 }
