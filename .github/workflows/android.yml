@@ -31,8 +31,8 @@ jobs:
               run: yarn build
 
             - name: Publish Release APK
-              # uses: siristechnology/action-release-react-native-apk@master
+              # uses: siristechnology/action-release@master
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
-                  APP_FOLDER: android/app
+                  RELEASE_FILE_PATH: android/app/build/outputs/apk/release/app-release.apk
                   RELEASE_TITLE: 'New Build'
