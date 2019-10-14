@@ -150,6 +150,17 @@ android {
             keyPassword 'android'
         }
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        signed {
+            signingConfig signingConfigs.debug
+        }
+
+        unsigned {}
+    }
+
     buildTypes {
 		debug {
             signingConfig signingConfigs.debug
