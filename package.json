@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "concurrently \"react-native start\"  \"react-native run-android\"",
+		"start": "concurrently \"react-native start\"  \"react-native run-android --variant unsigneddebug\"",
 		"build": "cd android && ./gradlew app:assembleRelease && cd ..",
 		"refresh": "adb shell input keyevent 46 46",
 		"reset": "react-native start --reset-cache",

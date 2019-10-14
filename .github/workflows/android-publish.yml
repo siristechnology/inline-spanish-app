@@ -37,5 +37,5 @@ jobs:
               uses: siristechnology/action-release@master
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
-                  RELEASE_FILE_PATH: android/app/build/outputs/apk/release/app-release.apk
+                  RELEASE_FILE_PATH: android/app/build/outputs/apk/signed/release/app-signed-release.apk
                   RELEASE_TITLE: 'New Build'
