@@ -5033,10 +5033,10 @@ react-native@0.61.2:
     stacktrace-parser "^0.1.3"
     whatwg-fetch "^3.0.0"
 
-react-navigation-stack@1.9.4:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.9.4.tgz#9de7537bb83a1d30a177957bc7932b9447f4c409"
-  integrity sha512-0Iv8t99RPsznXVadlHGRwOJqLzJmj96PfWiwmZEhVnbNwMVXMLz3oOno0LL9tbiukQxEaFAKUIblElpd9izS6w==
+react-navigation-stack@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.10.0.tgz#082976584878760dd4de34bd4f4359229ac71814"
+  integrity sha512-iCdqLfSI4BH4INc60TwpjH+M/ms5sBdsknHDDjolyzLPYXex0W6uBsOff5qv3lqbs+rHzmyim0wwdUN1rrA2bg==
   dependencies:
     prop-types "^15.7.2"
 
