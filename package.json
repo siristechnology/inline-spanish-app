@@ -27,7 +27,7 @@
 		"graphql-tag": "2.10.1",
 		"moment": "2.24.0",
 		"node-fetch": "2.6.0",
-		"react": "16.10.2",
+		"react": "16.11.0",
 		"react-native": "0.61.2",
 		"react-native-exception-handler": "2.10.8",
 		"react-native-gesture-handler": "1.4.1",
