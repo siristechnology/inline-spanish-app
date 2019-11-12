@@ -67,7 +67,7 @@ const client = new ApolloClient({
 		}),
 		new HttpLink({
 			uri:
-				'https://spanilla-service-qa.azurewebsites.net/api/spanilla-api?code=NJ9Xd15JxN6skheBnsM5BJwyaBdEgf6h/hBxPbeYHLXD1b8MQXS26A==',
+				'https://spanilla-service-prod.azurewebsites.net/api/spanilla-api?code=CmpR10wwnQhrF2BW4e9BlA3JtttCIUWK0uaT8G4IbyffJzDaC/W5wA==',
 			credentials: 'include',
 			fetch,
 		}),
