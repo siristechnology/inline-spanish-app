@@ -66,8 +66,7 @@ const client = new ApolloClient({
 			cache,
 		}),
 		new HttpLink({
-			uri:
-				'https://spanilla-service-qa.azurewebsites.net/api/spanilla-api?code=NJ9Xd15JxN6skheBnsM5BJwyaBdEgf6h/hBxPbeYHLXD1b8MQXS26A==',
+			uri: 'https://spanilla-qa.herokuapp.com/graphql',
 			credentials: 'include',
 			fetch,
 		}),
