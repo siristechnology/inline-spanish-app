@@ -43,7 +43,7 @@
 	"devDependencies": {
 		"@babel/core": "7.7.4",
 		"@babel/node": "7.7.4",
-		"@babel/runtime": "^7.7.0",
+		"@babel/runtime": "^7.7.4",
 		"@react-native-community/eslint-config": "^0.0.5",
 		"babel-jest": "^24.9.0",
 		"babel-plugin-graphql-tag": "2.5.0",
