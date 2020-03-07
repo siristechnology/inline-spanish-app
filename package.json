@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"start": "concurrently \"react-native start\"  \"react-native run-android --variant unsigneddebug\"",
-		"build": "cd android && ./gradlew app:assembleRelease && cd ..",
+		"build": "cd android && ./gradlew app:assembleSignedRelease && cd ..",
+		"bundle": "cd android && ./gradlew app:bundleSignedRelease && cd ..",
 		"refresh": "adb shell input keyevent 46 46",
 		"reset": "react-native start --reset-cache",
 		"test-query": "babel-node __tests__/graphql.integration.test.js",

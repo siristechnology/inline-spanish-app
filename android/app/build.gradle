@@ -121,6 +121,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+	buildToolsVersion rootProject.ext.buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -142,16 +143,16 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
-	signingConfigs {
+    signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+			storeFile file('beta.keystore')
             storePassword 'android'
-            keyAlias 'androiddebugkey'
+            keyAlias 'androidbetakey'
             keyPassword 'android'
         }
     }
 
-    flavorDimensions "version"
+	flavorDimensions "version"
 
     productFlavors {
         signed {
@@ -162,8 +163,7 @@ android {
     }
 
     buildTypes {
-		debug {
-            signingConfig signingConfigs.debug
+        debug {
         }
         release {
             minifyEnabled enableProguardInReleaseBuilds
