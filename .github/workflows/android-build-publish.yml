@@ -1,0 +1,63 @@
+name: Android Apk - Build & Release
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: macos-latest
+
+        strategy:
+            matrix:
+                node-version: [10.x]
+
+        steps:
+            - uses: actions/checkout@v1
+
+            - name: Set up JDK 1.8
+              uses: actions/setup-java@v1
+              with:
+                  java-version: 1.8
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Yarn Install, (Test)
+              run: |
+                  yarn
+
+            - name: Build with Gradle
+              run: |
+                  sh prebuild_script.sh
+                  yarn build
+
+            - name: Upload APK artifact
+              uses: actions/upload-artifact@v1
+              with:
+                  name: app-signed-release.apk
+                  path: android/app/build/outputs/apk/signed/release/app-signed-release.apk
+
+            - name: Publish Apk to Github Release
+              uses: marvinpinto/action-automatic-releases@latest
+              if: github.ref == 'refs/heads/master'
+              with:
+                  files: android/app/build/outputs/apk/signed/release/app-signed-release.apk
+                  repo_token: ${{ secrets.GITHUB_TOKEN }}
+                  automatic_release_tag: 'latest'
+                  title: 'Beta Build'
+                  prerelease: false
+
+            - name: Build Android Bundle to upload to Google Play
+              if: github.ref == 'refs/heads/master'
+              run: yarn bundle
+
+            - name: Publish Android Bundle to Google Play Store
+              uses: r0adkll/upload-google-play@v1
+              if: github.ref == 'refs/heads/master'
+              with:
+                  # The service account json private key file to authorize the upload request
+                  serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON_PLAIN_TEXT }}
+                  packageName: 'com.siristechnology.spanilla'
+                  releaseFile: android/app/build/outputs/bundle/signedRelease/app.aab
+                  track: beta
