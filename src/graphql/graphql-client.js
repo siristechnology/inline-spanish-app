@@ -5,12 +5,10 @@ import { onError } from 'apollo-link-error'
 import { withClientState } from 'apollo-link-state'
 import { ApolloLink, Observable } from 'apollo-link'
 import fetch from 'node-fetch'
-// import AsyncStorage from '@react-native-community/async-storage'
 
 const cache = new InMemoryCache()
 
 const request = async operation => {
-	// const token = await AsyncStorage.getItem('token')
 	const token = 'dummy-token'
 	operation.setContext({
 		headers: {
