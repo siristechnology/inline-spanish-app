@@ -1,5 +1,8 @@
 package com.siristechnology.spanilla;
 
+import android.content.res.Configuration;
+import android.os.Build;
+
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -11,5 +14,13 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "Spanilla";
+    }
+
+	@Override
+    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+        if (Build.VERSION.SDK_INT >= 21 && Build.VERSION.SDK_INT <= 25) {
+            return;
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
     }
 }

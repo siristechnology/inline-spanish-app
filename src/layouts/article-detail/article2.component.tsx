@@ -53,13 +53,13 @@ class Article2Component extends React.Component<Article2Props> {
 						article.translated_content,
 					)}
 
-					{/* <View style={themedStyle.readMoreBtnWrapper}>
+					<View style={themedStyle.readMoreBtnWrapper}>
 						<Button
 							onPress={this.handleLinkClick}
 							style={themedStyle.readMoreBtn}>
 							{'Read More'}
 						</Button>
-					</View> */}
+					</View>
 				</View>
 			</ContainerView>
 		)
@@ -97,8 +97,8 @@ class Article2Component extends React.Component<Article2Props> {
 	}
 
 	private handleLinkClick = () => {
-		const url = this.props.article.url
-		this.props.navigation.navigate('Article', { url })
+		const link = this.props.article.url
+		this.props.navigation.navigate('ArticleWeb', { link })
 	}
 }
 

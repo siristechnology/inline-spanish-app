@@ -10,11 +10,13 @@ import DevScreen from './src/screens/dev/dev-screen'
 import NewsScreen from './src/screens/news/news-screen'
 import ArticleDetail from './src/layouts/article-detail/article2.container'
 import './src/error/ErrorHandler'
+import { ArticleWebviewComponent } from './src/components/common'
 
 const NewsStack = createStackNavigator(
 	{
 		News: NewsScreen,
 		ArticleDetail: ArticleDetail,
+		ArticleWeb: ArticleWebviewComponent,
 	},
 	{
 		headerMode: 'none',
