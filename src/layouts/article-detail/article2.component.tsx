@@ -44,7 +44,9 @@ class Article2Component extends React.Component<Article2Props> {
 							style={themedStyle.dateLabel}
 							appearance="hint"
 							category="p2">
-							{this.getRelativeTime(article.date_published)}
+							{this.getRelativeTime(
+								article.date_published || article.date_modified,
+							)}
 						</Text>
 					</View>
 

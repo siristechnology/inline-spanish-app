@@ -19,7 +19,6 @@ export class ArticleWebviewComponent extends React.Component {
 				source={{ uri: link }}
 				style={{
 					flex: 1,
-					marginTop: 20,
 				}}
 			/>
 		)
