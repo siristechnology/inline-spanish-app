@@ -28,6 +28,7 @@ export const ActivityBar = withStyles(
 	ActivityBarComponent,
 	(theme: ThemeType) => ({
 		container: {
+			marginTop: -16,
 			flexDirection: 'row',
 			justifyContent: 'space-between',
 			alignItems: 'center',

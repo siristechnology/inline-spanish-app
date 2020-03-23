@@ -37,28 +37,32 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 					style={themedStyle.image}
 					source={{ uri: article.lead_image_url }}
 				/>
-				<View style={themedStyle.infoContainer}>
-					<Text style={themedStyle.titleLabel} category="h5">
-						{article.title}
-					</Text>
-					<Text
-						style={themedStyle.descriptionLabel}
-						appearance="hint"
-						category="s1">
-						{article.excerpt}
-					</Text>
-				</View>
 				<ArticleActivityBar
 					style={themedStyle.activityContainer}
 					likes={article.likes || 0}>
 					<ActivityAuthoring
 						photo={{ uri: article.source.logoLink }}
 						name={`${article.source.name}`}
-						date={this.getRelativeTime(
-							article.date_published || article.date_modified,
-						)}
 					/>
 				</ArticleActivityBar>
+				<View style={themedStyle.infoContainer}>
+					<Text style={themedStyle.titleLabel} category="h5">
+						{article.title}
+					</Text>
+					<Text>
+						{this.getRelativeTime(
+							article.date_published || article.date_modified,
+						)}
+					</Text>
+					<Text
+						style={themedStyle.descriptionLabel}
+						appearance="hint"
+						category="s1">
+						{article.excerpt
+							? article.excerpt.substring(0, 50) + '...'
+							: ''}
+					</Text>
+				</View>
 			</TouchableOpacity>
 		)
 	}
@@ -79,13 +83,12 @@ export const ArticleList1Item = withStyles(
 		},
 		infoContainer: {
 			paddingHorizontal: 16,
-			paddingVertical: 24,
+			paddingVertical: 8,
 			borderBottomWidth: 1,
 			borderBottomColor: theme['border-basic-color-2'],
 		},
 		activityContainer: {
 			paddingHorizontal: 16,
-			paddingVertical: 16,
 		},
 		image: {
 			height: 220,

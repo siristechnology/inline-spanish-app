@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import { Text } from 'react-native-ui-kitten/ui'
 import ArticleList1Container from '../../layouts/article-list1/articleList1.container'
+import { CircularSpinner } from '../../components/common'
 
 export const FETCH_ARTICLES_QUERY = gql`
 	query fetchArticles {
@@ -31,7 +32,7 @@ export default function NewsScreen(props) {
 		variables: {},
 	})
 	if (loading) {
-		return <Text>Loading...</Text>
+		return <CircularSpinner />
 	} else if (error) {
 		return <Text>Error!</Text>
 	}

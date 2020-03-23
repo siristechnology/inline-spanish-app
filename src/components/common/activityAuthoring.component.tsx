@@ -12,7 +12,7 @@ import { textStyle } from '../common/style'
 interface ComponentProps {
 	photo: ImageSourcePropType
 	name: string
-	date: string
+	date?: string
 }
 
 export type ActivitiAuthoringProps = ThemedComponentProps &
@@ -35,15 +35,6 @@ class ActivityAuthoringComponent extends React.Component<
 		return (
 			<View {...restProps} style={[themedStyle.container, style]}>
 				<Avatar style={themedStyle.authorPhoto} source={photo} />
-				<View style={themedStyle.authorInfoContainer}>
-					<Text style={themedStyle.authorNameLabel}>{name}</Text>
-					<Text
-						style={themedStyle.dateLabel}
-						appearance="hint"
-						category="p2">
-						{date}
-					</Text>
-				</View>
 			</View>
 		)
 	}
@@ -61,6 +52,8 @@ export const ActivityAuthoring = withStyles(
 		},
 		authorPhoto: {
 			margin: 0,
+			borderWidth: 2,
+			borderColor: theme['border-basic-color-2'],
 		},
 		authorNameLabel: textStyle.subtitle,
 		dateLabel: textStyle.paragraph,

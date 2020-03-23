@@ -5,12 +5,7 @@ import {
 	ThemeType,
 	withStyles,
 } from 'react-native-ui-kitten/theme'
-import {
-	ActivityBar,
-	ActivityBarProps,
-	LikeButton,
-	ReactionBar,
-} from '../../components/common'
+import { ActivityBar, ActivityBarProps } from '../../components/common'
 
 interface ComponentProps {
 	comments: number
@@ -34,16 +29,7 @@ class ArticleActivityBarComponent extends React.Component<
 			...restProps
 		} = this.props
 
-		return (
-			<ActivityBar {...restProps}>
-				{children}
-				<ReactionBar>
-					<LikeButton textStyle={textStyle} activeOpacity={0.75}>
-						{`${likes || 0}`}
-					</LikeButton>
-				</ReactionBar>
-			</ActivityBar>
-		)
+		return <ActivityBar {...restProps}>{children}</ActivityBar>
 	}
 }
 

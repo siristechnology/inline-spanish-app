@@ -6,28 +6,18 @@ import {
 	ThemeType,
 	withStyles,
 } from 'react-native-ui-kitten/theme'
-import { Avatar, Text } from 'react-native-ui-kitten/ui'
-import { ArticleActivityBar } from '../../components/articles'
+import { Avatar, Text, Button } from 'react-native-ui-kitten/ui'
 import { ContainerView, textStyle } from '../../components/common'
 import { ClockIconOutline } from '../../assets/icons'
 
 interface ComponentProps {
 	article
-	onCommentPress: () => void
-	onLikePress: () => void
+	navigate
 }
 
 export type Article2Props = ThemedComponentProps & ComponentProps
 
 class Article2Component extends React.Component<Article2Props> {
-	private onCommentButtonPress = () => {
-		this.props.onCommentPress()
-	}
-
-	private onLikeButtonPress = () => {
-		this.props.onLikePress()
-	}
-
 	public render(): React.ReactNode {
 		const { themedStyle, article } = this.props
 
@@ -43,19 +33,11 @@ class Article2Component extends React.Component<Article2Props> {
 					/>
 				</ImageBackground>
 
-				<Text style={themedStyle.titleLabel} category="h5">
-					{article.title}
-				</Text>
-				{this.createContentView(
-					article.original_content,
-					article.translated_content,
-				)}
-				<ArticleActivityBar
-					style={themedStyle.detailsContainer}
-					comments={article.comments ? article.comments.length : 0}
-					likes={article.likes}
-					onCommentPress={this.onCommentButtonPress}
-					onLikePress={this.onLikeButtonPress}>
+				<View style={themedStyle.detailsContainer}>
+					<Text style={themedStyle.titleLabel} category="h5">
+						{article.title}
+					</Text>
+
 					<View style={themedStyle.dateContainer}>
 						{ClockIconOutline(themedStyle.dateIcon)}
 						<Text
@@ -65,7 +47,20 @@ class Article2Component extends React.Component<Article2Props> {
 							{this.getRelativeTime(article.date_published)}
 						</Text>
 					</View>
-				</ArticleActivityBar>
+
+					{this.createContentView(
+						article.original_content,
+						article.translated_content,
+					)}
+
+					{/* <View style={themedStyle.readMoreBtnWrapper}>
+						<Button
+							onPress={this.handleLinkClick}
+							style={themedStyle.readMoreBtn}>
+							{'Read More'}
+						</Button>
+					</View> */}
+				</View>
 			</ContainerView>
 		)
 	}
@@ -100,6 +95,11 @@ class Article2Component extends React.Component<Article2Props> {
 			</View>
 		)
 	}
+
+	private handleLinkClick = () => {
+		const url = this.props.article.url
+		this.props.navigation.navigate('Article', { url })
+	}
 }
 
 export const Article2 = withStyles(Article2Component, (theme: ThemeType) => ({
@@ -109,13 +109,7 @@ export const Article2 = withStyles(Article2Component, (theme: ThemeType) => ({
 	},
 	detailsContainer: {
 		paddingHorizontal: 24,
-		paddingVertical: 24,
-		borderTopWidth: 1,
-		borderTopColor: theme['border-basic-color-2'],
-	},
-	dateContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
+		paddingVertical: 4,
 	},
 	image: {
 		minHeight: 175,
@@ -123,15 +117,28 @@ export const Article2 = withStyles(Article2Component, (theme: ThemeType) => ({
 	authorPhoto: {
 		position: 'absolute',
 		left: 24,
-		bottom: -32,
+		bottom: -24,
 		margin: 0,
 		borderWidth: 2,
 		borderColor: theme['border-basic-color-2'],
 	},
 	titleLabel: {
-		marginHorizontal: 24,
-		marginTop: 48,
+		marginTop: 32,
 		...textStyle.headline,
+	},
+	dateContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginTop: 4,
+	},
+	dateIcon: {
+		width: 16,
+		height: 16,
+		tintColor: theme['text-hint-color'],
+	},
+	dateLabel: {
+		marginLeft: 4,
+		...textStyle.paragraph,
 	},
 	translatedLabel: {
 		flex: 1,
@@ -142,17 +149,16 @@ export const Article2 = withStyles(Article2Component, (theme: ThemeType) => ({
 	},
 	contentLabel: {
 		flex: 1,
-		marginHorizontal: 24,
 		marginVertical: 24,
 		...textStyle.paragraph,
 	},
-	dateLabel: {
-		marginLeft: 8,
-		...textStyle.paragraph,
+	readMoreBtnWrapper: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		margin: 8,
 	},
-	dateIcon: {
-		width: 24,
-		height: 24,
-		tintColor: theme['text-hint-color'],
+	readMoreBtn: {
+		width: 200,
 	},
 }))
