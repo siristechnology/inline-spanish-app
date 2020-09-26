@@ -16,6 +16,8 @@ export default class ArticleList1Container extends React.Component<
 			<ArticleList1
 				articles={this.props.articles}
 				onItemPress={this.onItemPress}
+				refreshing={this.props.refreshing}
+				handleRefresh={this.props.handleRefresh}
 			/>
 		)
 	}

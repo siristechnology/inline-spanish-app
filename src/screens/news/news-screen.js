@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import { Text } from 'react-native-ui-kitten/ui'
@@ -29,9 +29,16 @@ export const FETCH_ARTICLES_QUERY = gql`
 `
 
 export default function NewsScreen(props) {
-	const { loading, error, data } = useQuery(FETCH_ARTICLES_QUERY, {
+	const [refreshing, setRefreshing] = useState(false)
+	const { loading, error, refetch, data } = useQuery(FETCH_ARTICLES_QUERY, {
 		variables: {},
 	})
+
+	const handleRefresh = () => {
+		setRefreshing(true)
+		refetch().then(() => setRefreshing(false))
+	}
+
 	if (loading) {
 		return <CircularSpinner />
 	} else if (error) {
@@ -44,5 +51,12 @@ export default function NewsScreen(props) {
 		article => article.source && article.source.category === 'news',
 	)
 
-	return <ArticleList1Container articles={articles} navigation={navigation} />
+	return (
+		<ArticleList1Container
+			articles={articles}
+			navigation={navigation}
+			refreshing={refreshing}
+			handleRefresh={handleRefresh}
+		/>
+	)
 }

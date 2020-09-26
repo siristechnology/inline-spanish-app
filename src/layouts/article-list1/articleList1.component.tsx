@@ -1,4 +1,5 @@
 import React from 'react'
+import { RefreshControl } from 'react-native'
 import {
 	ThemedComponentProps,
 	ThemeType,
@@ -9,6 +10,8 @@ import { ArticleList1Item } from './articleList1Item.component'
 
 interface ComponentProps {
 	articles
+	refreshing
+	handleRefresh
 	onItemPress: (article) => void
 }
 
@@ -32,7 +35,7 @@ class ArticleList1Component extends React.Component<ArticleList1Props> {
 	}
 
 	public render() {
-		const { themedStyle, articles } = this.props
+		const { themedStyle, articles, refreshing, handleRefresh } = this.props
 
 		return (
 			<FlatList
@@ -40,6 +43,13 @@ class ArticleList1Component extends React.Component<ArticleList1Props> {
 				data={articles}
 				renderItem={this.renderItem}
 				keyExtractor={item => item._id}
+				refreshControl={
+					<RefreshControl
+						refreshing={refreshing}
+						onRefresh={handleRefresh}
+						colors={['#0000ff', '#689F38']}
+					/>
+				}
 			/>
 		)
 	}

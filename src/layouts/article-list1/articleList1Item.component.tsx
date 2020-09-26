@@ -13,6 +13,8 @@ import { ActivityAuthoring, textStyle } from '../../components/common'
 // @ts-ignore (override `onPress` prop)
 interface ComponentProps extends TouchableOpacityProps {
 	article
+	refreshing
+	handleRefresh
 	onPress: (article) => void
 	onLikePress: (article) => void
 }
