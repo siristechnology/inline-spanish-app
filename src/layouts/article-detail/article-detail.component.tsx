@@ -59,7 +59,7 @@ class Article2Component extends React.Component<Article2Props> {
 						<Button
 							onPress={this.handleLinkClick}
 							style={themedStyle.readMoreBtn}>
-							{'Read More'}
+							{'Read Original Source'}
 						</Button>
 					</View>
 				</View>
