@@ -61,7 +61,7 @@ export const ArticleList1 = withStyles(
 		container: {
 			paddingHorizontal: 16,
 			paddingVertical: 8,
-			backgroundColor: theme['background-basic-color-2'],
+			backgroundColor: theme['background-basic-color-4'],
 		},
 		item: {
 			marginVertical: 8,
