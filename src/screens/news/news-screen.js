@@ -8,6 +8,7 @@ import { CircularSpinner } from '../../components/common'
 export const FETCH_ARTICLES_QUERY = gql`
 	query fetchArticles {
 		fetchArticles {
+			_id
 			title
 			url
 			lead_image_url

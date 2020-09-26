@@ -7,6 +7,7 @@ import ArticleList1Container from '../../layouts/article-list1/articleList1.cont
 export const FETCH_ARTICLES_QUERY = gql`
 	query fetchArticles {
 		fetchArticles {
+			_id
 			title
 			url
 			lead_image_url

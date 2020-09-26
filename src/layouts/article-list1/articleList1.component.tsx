@@ -4,7 +4,7 @@ import {
 	ThemeType,
 	withStyles,
 } from 'react-native-ui-kitten/theme'
-import { List } from 'react-native-ui-kitten/ui'
+import { FlatList } from 'react-navigation'
 import { ArticleList1Item } from './articleList1Item.component'
 
 interface ComponentProps {
@@ -35,10 +35,11 @@ class ArticleList1Component extends React.Component<ArticleList1Props> {
 		const { themedStyle, articles } = this.props
 
 		return (
-			<List
+			<FlatList
 				contentContainerStyle={themedStyle.container}
 				data={articles}
 				renderItem={this.renderItem}
+				keyExtractor={item => item._id}
 			/>
 		)
 	}

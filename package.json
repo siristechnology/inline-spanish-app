@@ -3,7 +3,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "concurrently \"react-native start\"  \"react-native run-android --variant unsigneddebug\"",
+		"start": "react-native start",
+		"android": "react-native run-android --variant unsigneddebug",
 		"log": "react-native log-android",
 		"build": "cd android && ./gradlew app:assembleSignedRelease && cd ..",
 		"bundle": "cd android && ./gradlew app:bundleSignedRelease && cd ..",
