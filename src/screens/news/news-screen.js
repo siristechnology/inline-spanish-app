@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { Text } from 'react-native-ui-kitten/ui'
 import ArticleList1Container from '../../layouts/article-list1/articleList1.container'
 import { CircularSpinner } from '../../components/common'
+import AppLayout from '../app-layout'
 
 export const FETCH_ARTICLES_QUERY = gql`
 	query fetchArticles {
@@ -52,11 +53,13 @@ export default function NewsScreen(props) {
 	)
 
 	return (
-		<ArticleList1Container
-			articles={articles}
-			navigation={navigation}
-			refreshing={refreshing}
-			handleRefresh={handleRefresh}
-		/>
+		<AppLayout>
+			<ArticleList1Container
+				articles={articles}
+				navigation={navigation}
+				refreshing={refreshing}
+				handleRefresh={handleRefresh}
+			/>
+		</AppLayout>
 	)
 }
