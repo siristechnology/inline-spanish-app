@@ -9,7 +9,7 @@
 <a href='https://play.google.com/store/apps/details?id=com.siristechnology.spanilla' target='_blank' rel="noopener noreferrer"><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height="80"/></a>
 </div>
 
-## Latest screenshot
+## Latest screenshots
 
 <div>
 <img src="assets/images/screenshot-1.png" alt="screenshot-1" width="300" style="margin-right:20px"/>

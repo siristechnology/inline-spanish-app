@@ -12,7 +12,7 @@ class AppLayout extends React.PureComponent {
 				<OfflineNotice />
 				<View style={style.headerStyle}>
 					<Text style={style.dateStyle}>
-						{moment().format('MMMM Do YYYY')}
+						{moment().format('MMMM Do, YYYY')}
 					</Text>
 					<Weather />
 				</View>
