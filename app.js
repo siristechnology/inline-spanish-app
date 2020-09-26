@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import DevScreen from './src/screens/dev/dev-screen'
 import NewsScreen from './src/screens/news/news-screen'
-import ArticleDetail from './src/layouts/article-detail/article2.container'
+import ArticleDetail from './src/layouts/article-detail/article-detail.container'
 import './src/error/ErrorHandler'
 import { ArticleWebviewComponent } from './src/components/common'
 

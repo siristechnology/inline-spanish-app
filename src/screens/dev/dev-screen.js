@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import { Text } from 'react-native-ui-kitten/ui'
 import ArticleList1Container from '../../layouts/article-list1/articleList1.container'
 import AppLayout from '../app-layout'
+import { Text, StyleSheet } from 'react-native'
+import moment from 'moment'
+import Weather from '../../components/weather.component.js'
 
 export const FETCH_ARTICLES_QUERY = gql`
 	query fetchArticles {
@@ -52,7 +54,15 @@ export default function DevScreen(props) {
 	)
 
 	return (
-		<AppLayout>
+		<AppLayout
+			headerComponent={
+				<>
+					<Text style={style.dateStyle}>
+						{moment().format('MMMM Do, YYYY')}
+					</Text>
+					<Weather />
+				</>
+			}>
 			<ArticleList1Container
 				articles={articles}
 				navigation={navigation}
@@ -62,3 +72,11 @@ export default function DevScreen(props) {
 		</AppLayout>
 	)
 }
+
+const style = StyleSheet.create({
+	dateStyle: {
+		fontWeight: 'bold',
+		fontSize: 22,
+		paddingTop: 5,
+	},
+})
