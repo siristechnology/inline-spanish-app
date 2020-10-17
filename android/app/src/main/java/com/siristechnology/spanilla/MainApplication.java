@@ -2,6 +2,7 @@ package com.siristechnology.spanilla;
 
 import android.app.Application;
 import android.util.Log;
+import java.util.List;
 
 import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
@@ -10,8 +11,8 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.microsoft.codepush.react.CodePush;
 
-import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,6 +29,11 @@ public class MainApplication extends Application implements ReactApplication {
       // Packages that cannot be autolinked yet can be added manually here, for example:
       // packages.add(new MyReactNativePackage());
       return packages;
+    }
+
+    @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
     }
 
     @Override
