@@ -1,6 +1,8 @@
 name: Android Apk - Build & Release
 
-on: [push]
+on:
+    push:
+    workflow_dispatch:
 
 jobs:
     build:
@@ -9,23 +11,20 @@ jobs:
         steps:
             - uses: actions/checkout@v1
 
-            - name: Set up JDK 1.8
+            - name: Set up JDK 11.0.7
               uses: actions/setup-java@v1
               with:
-                  java-version: 1.8
+                  java-version: '11.0.7'
 
-            - name: Use Node.js 10.x
+            - name: Use Node.js 14.11.0
               uses: actions/setup-node@v1
               with:
-                  node-version: 10.x
+                  node-version: '14.11.0'
 
-            - name: Yarn Install, (Test)
-              run: |
-                  yarn
-
-            - name: Build with Gradle
+            - name: Yarn Install, Build, (Test)
               run: |
                   sh prebuild_script.sh
+                  yarn install --frozen-lockfile                  
                   yarn build
 
             - name: Upload APK artifact
@@ -41,7 +40,7 @@ jobs:
                   files: android/app/build/outputs/apk/signed/release/app-signed-release.apk
                   repo_token: ${{ secrets.GITHUB_TOKEN }}
                   automatic_release_tag: 'latest'
-                  title: 'Beta Build'
+                  title: 'Spanilla - Beta Build'
                   prerelease: false
 
             - name: Build Android Bundle to upload to Google Play
@@ -52,8 +51,7 @@ jobs:
               uses: r0adkll/upload-google-play@v1
               if: github.ref == 'refs/heads/master'
               with:
-                  # The service account json private key file to authorize the upload request
                   serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON_PLAIN_TEXT }}
                   packageName: 'com.siristechnology.spanilla'
-                  releaseFile: android/app/build/outputs/bundle/signedRelease/app.aab
+                  releaseFile: android/app/build/outputs/bundle/signedRelease/app-signed-release.aab
                   track: production
