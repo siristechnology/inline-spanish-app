@@ -147,7 +147,7 @@ export const Article2 = withStyles(Article2Component, (theme: ThemeType) => ({
 	},
 	englishLabel: {
 		flex: 1,
-		color: '#dadfe3',
+		color: theme['text-hint-color'],
 	},
 	contentLabel: {
 		flex: 1,

@@ -53,5 +53,5 @@ jobs:
               with:
                   serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON_PLAIN_TEXT }}
                   packageName: 'com.siristechnology.spanilla'
-                  releaseFile: android/app/build/outputs/bundle/signedRelease/app-signed-release.aab
+                  releaseFiles: android/app/build/outputs/bundle/signedRelease/app-signed-release.aab
                   track: production
