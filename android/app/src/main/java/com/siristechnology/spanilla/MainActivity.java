@@ -2,6 +2,7 @@ package com.siristechnology.spanilla;
 
 import android.content.res.Configuration;
 import android.os.Build;
+import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 
@@ -22,5 +23,10 @@ public class MainActivity extends ReactActivity {
             return;
         }
         super.applyOverrideConfiguration(overrideConfiguration);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(null);
     }
 }
